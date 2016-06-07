@@ -29,22 +29,22 @@ public class GuardarBebida extends HttpServlet {
 		
 		if(id==null){
 		
-		Bebida mibebida=new Bebida(nombre,costo,categoria,imagen);
-		//creamos una istancia de PersistenceManager
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			pm.makePersistent(mibebida);
-			
-			Key k = KeyFactory.stringToKey(mibebida.getIdBebida());
-			Bebida a = pm.getObjectById(Bebida.class, k);
-			resp.sendRedirect("listabebida");
-			/*req.setAttribute("Bebida", a);
-			RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/listabebida");
-			dispatcher.forward(req, resp);*/
+			Bebida mibebida=new Bebida(nombre,costo,categoria,imagen);
+			//creamos una istancia de PersistenceManager
+			PersistenceManager pm = PMF.get().getPersistenceManager();
+			try {
+				pm.makePersistent(mibebida);
+				
+				Key k = KeyFactory.stringToKey(mibebida.getIdBebida());
+				Bebida a = pm.getObjectById(Bebida.class, k);
+				resp.sendRedirect("listabebida");
+				/*req.setAttribute("Bebida", a);
+				RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/listabebida");
+				dispatcher.forward(req, resp);*/
+				}
+			finally {
+				pm.close();
 			}
-		finally {
-			pm.close();
-		}
 		}else{
 			PersistenceManager pm = PMF.get().getPersistenceManager();
 		    try {
