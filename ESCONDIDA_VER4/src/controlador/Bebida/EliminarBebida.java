@@ -35,23 +35,7 @@ public class EliminarBebida extends HttpServlet {
 				pm.deletePersistent(a);
 				
 			}
-			
-			
-			/*final PersistenceManager pms = PMF.get().getPersistenceManager();
-			final Query q = pms.newQuery(Bebida.class);
-			
-			try{
-				@SuppressWarnings("unchecked")
-				List<Bebida> lisbebidas = (List<Bebida>) q.execute();
-				req.setAttribute("listaBebidas", lisbebidas);
-				RequestDispatcher rd = req.getRequestDispatcher("/ListaBebidas.jsp");
-				rd.forward(req, resp);
-			}catch(Exception e){
-				System.out.println(e);
-			}finally{
-				q.closeAll();
-				pms.close();
-			}*/
+	
 			resp.sendRedirect("listabebida");
 			//resp.sendRedirect("/ListaPlatos.jsp");
 	}

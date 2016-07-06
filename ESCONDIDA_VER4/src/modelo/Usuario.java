@@ -34,11 +34,14 @@ public class Usuario{
     private char sexo;
 	@Persistent
     private String imagen;
+	@Persistent
+	private String tipo;
     
 	public Usuario() {
     }
 
-    public Usuario(String nombres, String apellidos, String correo, String contrasenia,int anio,int mes,int dia,char sex,String img) {
+    public Usuario(String nombres, String apellidos, String correo, String contrasenia,
+    		int anio,int mes,int dia,char sex,String img, String tip) {
         super();
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -49,6 +52,7 @@ public class Usuario{
         this.nacDia=dia;
         this.sexo=sex;
         this.imagen=img;
+        this.tipo = tip;
     }
 
     public String getIdUsuario() {
@@ -128,6 +132,14 @@ public class Usuario{
 	}
 	public void setImagen(String img){
 		imagen=img;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
     
 }

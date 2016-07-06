@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import controlador.PMF;
 import modelo.Bebida;
-
-
-
 @SuppressWarnings("serial")
 public class ListaBebida extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
