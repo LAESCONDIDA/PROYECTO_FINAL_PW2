@@ -3,21 +3,17 @@ package controlador.Pedido;
 import common.*;
 import java.io.IOException;
 
-import javax.jdo.PersistenceManager;
+//import javax.jdo.PersistenceManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-import controlador.PMF;
-import modelo.Bebida;
-import modelo.BebidaMenu;
-import modelo.Menu_Dia;
-import modelo.Plato;
-import modelo.PlatoMenu;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+
 
 @SuppressWarnings("serial")
 public class GuardarPedido extends HttpServlet {
-	@SuppressWarnings("unchecked")
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
 		String hora = (String) req.getAttribute("Hora");
@@ -26,11 +22,13 @@ public class GuardarPedido extends HttpServlet {
 		String cvr = (String) req.getAttribute("cvr");
 		String fecha = (String) req.getAttribute("Fecha");
 		
-		String USUARIO = (String)this.getServletContext().getAttribute("usuario") ;
-		
+		UserService us = (UserService)this.getServletContext().getAttribute("usuario") ;
+		User user = us.getCurrentUser();
+		String USUARIO = user.getEmail();
 		String CUERPO_MAIL = "Servivio de pedidos de La Escondida\n";
 		CUERPO_MAIL += "Hora del pedido: "+ hora+"\n";
 		CUERPO_MAIL += "Fecha del pedido: "+ fecha + "\n";
+		CUERPO_MAIL += "Direccion: "+ direccion + "\n";
 		CUERPO_MAIL += "Codigo de seguridad: "+ tarjeta.substring(0,4) + cvr.substring(0, 3) + USUARIO.substring(0, USUARIO.indexOf("@")) + "\n\n";
 		CUERPO_MAIL += "Imprima este voucher y presentelo al momento de hacer efectiva la entrega.";
 		

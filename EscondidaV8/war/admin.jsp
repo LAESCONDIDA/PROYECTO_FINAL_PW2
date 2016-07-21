@@ -5,7 +5,7 @@
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 
-<%UserService us = (UserService) request.getAttribute("user");%>
+<%UserService us = (UserService) this.getServletContext().getAttribute("usuario");%>
 <!DOCTYPE HTML>
 <html>
 	<head>

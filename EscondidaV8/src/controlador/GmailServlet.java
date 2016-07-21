@@ -32,8 +32,9 @@ public class GmailServlet extends HttpServlet {
 		}else{
 			final PersistenceManager pm = PMF.get().getPersistenceManager();
 			if(user!=null){
+				this.getServletContext().setAttribute("usuario", us );
 				if(user.getEmail().equals("restaurantescondida@gmail.com") ){
-					req.setAttribute("user", us);
+					//req.setAttribute("user", us);
 					RequestDispatcher rd = req.getRequestDispatcher("admin.jsp");
 					try {
 						rd.forward(req, resp);
@@ -43,7 +44,7 @@ public class GmailServlet extends HttpServlet {
 					}
 				}
 				else{
-					this.getServletContext().setAttribute("usuario", user.getEmail() );
+					
 					final Query q = pm.newQuery(Usuario.class);
 					String m = user.getEmail();
 					q.setFilter("email == _email");
